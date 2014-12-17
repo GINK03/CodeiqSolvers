@@ -1,18 +1,17 @@
 import math
 import decimal
-def prime_table(n):
-  list = [True for _ in xrange(n + 1)]
-  i = 2
+def prime_table(T):
+  factfilter = [True for _ in xrange(T.sqrt()-10*7, T.sqrt())]
+  i = T.sqrt()-10*7
   while i * i <= n:
-    if list[i]:
+    if factfilter[i]:
       j = i + i
       while j <= n:
-        list[j] = False
+        factfilter[j] = False
         j += i
     i += 1
-  table = [i for i in xrange(n + 1) if list[i] and i >= 2]
+  table = [i for i in xrange(T.sqrt()-10*7, T.sqrt()) if factfilter[i] and i >= 2]
   return table
-
 
 
 decimal.getcontext().prec = 100
@@ -24,7 +23,7 @@ def it():
         maxx -= 1
 
 for n,i in enumerate(it()):
-    if n%1000000 == 0:
+    if n%10000000 == 0:
         print 'iter',n
     if T%i == 0:
         print 'prime is,',i

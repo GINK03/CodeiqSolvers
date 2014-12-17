@@ -1,4 +1,7 @@
 import itertools
+import os
+def echo(s):
+    os.system('echo ' + str(s)  + ' > 4th.txt')
 '''
 IN = [(2,3,5),\
     (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73),\
@@ -7,14 +10,13 @@ IN = [(2,3,5),\
     (2, 2, 2, 2, 11, 11, 11, 11, 23, 23, 31, 37, 41, 43, 43, 53, 59, 61, 67, 67, 73, 199, 211, 211, 211, 211, 211, 211, 211, 211, 211, 263, 263, 263, 263, 263, 283, 283, 283, 311, 311, 311, 311, 337, 337, 349, 353, 359, 367, 373)\
     ]
 '''
-IN = [(2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3)]
-for n,i in enumerate(map(list, IN)):
+INs = [(2, 2, 2, 2, 11, 11, 11, 11, 23, 23, 31, 37, 41, 43, 43, 53, 59, 61, 67, 67, 73, 199, 211, 211, 211, 211, 211, 211, 211, 211, 211, 263, 263, 263, 263, 263, 283, 283, 283, 311, 311, 311, 311, 337, 337, 349, 353, 359, 367, 373)]
+for i in map(list, INs):
     setbuff = set([])
     for l in xrange(1, len(i)+1):
         for it,c in enumerate(itertools.combinations(i,l)):
-            if not ','.join(map(str, sorted(c))) in setbuff:
-                setbuff.add(','.join(map(str, sorted(c))))
+            if not ','.join(map(str, c)) in setbuff:
+                setbuff.add(','.join(map(str, c)))
             if it%1000000 == 0:
                 pass
-        print 'l', l
-    print n, len(setbuff)
+    echo(len(setbuff))

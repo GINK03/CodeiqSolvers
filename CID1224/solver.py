@@ -1,11 +1,15 @@
-import itertools
-import math
+# CID1224
+import copy 
+S = [0 for x in range(10)] + [1] + [0 for x in range(10)]
+VH = [S]
+for v in range(9):
+    s = [0 for x in range(21)]
+    for h in range(21):
+        if h+1 < 21:
+            s[h] = VH[-1][h-1] + VH[-1][h+1]
+        else:
+            s[h] = VH[-1][h-1] + VH[-1][h]
+    VH.append(s)
 
-for i in xrange(1,11):
-    a = math.ceil(i/2.)
-    oe = i%2 == 0
-    print i, a, oe
-    print 'step', (lambda x:x-1 if x > 1 else 1)(i)
-    for i_ in xrange(1, i+2, (lambda x:x-2 if x > 2 else 1)(i) ):
-        print i_,
-    print ''
+for vh in VH:
+    print ''.join(map(lambda x:' ' if x == 0 else str(x), vh))
