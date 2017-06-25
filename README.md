@@ -1,4 +1,4 @@
-codeiq-answer
+CodeiqSolver
 =============
 
 codeiqのチャレンジ結果
